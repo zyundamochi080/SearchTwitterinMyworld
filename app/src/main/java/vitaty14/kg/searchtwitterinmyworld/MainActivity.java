@@ -1,7 +1,9 @@
 //created by KG 2018/08/20
 package vitaty14.kg.searchtwitterinmyworld;
 
+
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -20,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         Button button = findViewById(R.id.button_search);
+        Button button_h = findViewById(R.id.button_history);
 
         final EditText editText = findViewById(R.id.editText_search);
         final EditText editText_gn = findViewById(R.id.editText_getname);
@@ -94,7 +97,18 @@ public class MainActivity extends AppCompatActivity {
                 }
                 Log.d("debug","DebugMessage_last:"+sb);
 
+                SharedPreferences sp = getSharedPreferences("sp",MODE_PRIVATE);
+                sp.edit().putString("SaveString",sb.toString()).commit();
+
                 Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(sb.toString()));
+                startActivity(intent);
+            }
+        });
+
+        button_h.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplication(),HistoryActivity.class);
                 startActivity(intent);
             }
         });

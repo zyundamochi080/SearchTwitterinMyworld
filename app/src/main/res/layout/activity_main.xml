@@ -53,39 +53,36 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button_search"
-        app:layout_constraintVertical_bias="0.256" />
+        app:layout_constraintVertical_bias="0.154" />
 
     <CheckBox
         android:id="@+id/checkBox_bot"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
         android:checked="true"
         android:text="bot除外"
         android:textColor="@color/colorWhite"
         android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/checkBox_getname"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/checkBox_jp"
-        app:layout_constraintVertical_bias="0.51" />
+        app:layout_constraintTop_toBottomOf="@+id/checkBox_jp" />
 
     <CheckBox
         android:id="@+id/checkBox_getname"
         android:layout_width="177dp"
-        android:layout_height="32dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
         android:checked="false"
         android:text="ユーザ検索"
         android:textColor="@color/colorWhite"
         android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/editText_getname"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/checkBox_bot" />
 
     <EditText
         android:id="@+id/editText_getname"
         android:layout_width="249dp"
-        android:layout_height="wrap_content"
+        android:layout_height="53dp"
         android:backgroundTint="@color/colorSpringgreen"
         android:ems="10"
         android:hint="ID:@"
@@ -93,8 +90,19 @@
         android:textColor="@color/colorWhite"
         android:textColorHint="@color/colorWhite"
         android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/checkBox_getname" />
+
+    <Button
+        android:id="@+id/button_history"
+        android:layout_width="195dp"
+        android:layout_height="wrap_content"
+        android:text="履歴"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText_getname"
+        app:layout_constraintVertical_bias="0.416" />
 
 </android.support.constraint.ConstraintLayout>
