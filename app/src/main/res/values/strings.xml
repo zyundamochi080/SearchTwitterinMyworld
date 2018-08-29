@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">SearchTwitterinMyworld</string>
+
+    <string name="button_delete">実行</string>
+    <string name="dlg_title">履歴削除</string>
+    <string name="dlg_msg">履歴を削除します。よろしいですか？</string>
 </resources>

@@ -9,3 +9,4 @@ What you can do with this application is the following items.
 - Only the specified language(eg Japanese,english etc).
 - Exclude specific word(eg excluding bot).
 - Search only the tweets of specified user.
+- Save previous search history.

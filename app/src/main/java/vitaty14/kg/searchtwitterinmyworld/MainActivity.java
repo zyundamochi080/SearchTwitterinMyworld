@@ -95,11 +95,23 @@ public class MainActivity extends AppCompatActivity {
                 if(checkBox_bt.isChecked() == true){
                     sb.append("%20-%22bot%22");
                 }
+
+                //最終出力文字列
                 Log.d("debug","DebugMessage_last:"+sb);
 
                 SharedPreferences sp = getSharedPreferences("sp",MODE_PRIVATE);
-                sp.edit().putString("SaveString",sb.toString()).commit();
 
+                for(int count=1; count<6; count++) {
+                    Log.d("debug", "Debug(string)"+count);
+                    if (sp.contains("SaveString_"+ count) == false) {
+                        sp.edit().putString("SaveString_"+ count, sb.toString()).commit();
+                        Log.d("debug", "Debug(writing)");
+                        count = 10;
+                    }
+                    if(sp.contains("SaveString_5") == true && count<=5){
+                        Toast.makeText(MainActivity.this,"HistoryCapacity is full",Toast.LENGTH_SHORT).show();
+                    }
+                }
                 Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(sb.toString()));
                 startActivity(intent);
             }
