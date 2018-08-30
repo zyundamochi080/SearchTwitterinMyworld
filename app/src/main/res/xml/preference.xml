@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <ListPreference
+        android:key="setting_language"
+        android:title="検索言語"
+        android:defaultValue="Japanese"
+        android:entries="@array/language_entries"
+        android:entryValues="@array/language_values"/>
+
+    <EditTextPreference
+        android:key="setting_word"
+        android:title="除外ワード"
+        android:defaultValue="@string/default_word"
+        android:summary="@string/default_word" />
+
+</PreferenceScreen>

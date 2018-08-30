@@ -31,8 +31,9 @@ public class HistoryActivity extends AppCompatActivity {
         Button button_r = findViewById(R.id.button_return);
         Button button_d = findViewById(R.id.button_delete);
 
-        SharedPreferences sp = getSharedPreferences("sp", Context.MODE_PRIVATE);
+        SharedPreferences sp = getSharedPreferences("HistoryDate", Context.MODE_PRIVATE);
 
+        //Todo:この下の書き方をいい感じにしたい
         String text_1 = sp.getString("SaveString_1", "History not Found");
         textView_disp_1.setText(text_1);
 
@@ -48,6 +49,7 @@ public class HistoryActivity extends AppCompatActivity {
         String text_5 = sp.getString("SaveString_5", "History not Found");
         textView_disp_5.setText(text_5);
 
+        //Alert作成
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle(R.string.dlg_title);
         builder.setMessage(R.string.dlg_msg);

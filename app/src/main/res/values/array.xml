@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="language_entries">
+        <item>日本語</item>
+        <item>英語</item>
+        <item>ドイツ語</item>
+        <item>スペイン語</item>
+        <item>オランダ語</item>
+        <item>フランス語</item>
+        <item>イタリア語</item>
+        <item>中国語</item>
+        <item>韓国語</item>
+    </array>
+
+    <array name="language_values">
+        <item>japanese</item>
+        <item>english</item>
+        <item>german</item>
+        <item>spanish</item>
+        <item>dutch</item>
+        <item>french</item>
+        <item>italian</item>
+        <item>chinese</item>
+        <item>korean</item>
+    </array>
+
+</resources>

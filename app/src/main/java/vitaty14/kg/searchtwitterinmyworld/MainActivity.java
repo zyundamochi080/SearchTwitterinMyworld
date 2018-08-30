@@ -8,6 +8,8 @@ import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -27,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
         final EditText editText = findViewById(R.id.editText_search);
         final EditText editText_gn = findViewById(R.id.editText_getname);
 
-        final CheckBox checkBox_jp = findViewById(R.id.checkBox_jp);
+        final CheckBox checkBox_sl = findViewById(R.id.checkBox_selectlanguage);
         final CheckBox checkBox_gn = findViewById(R.id.checkBox_getname);
         final CheckBox checkBox_bt = findViewById(R.id.checkBox_bot);
 
@@ -38,6 +40,9 @@ public class MainActivity extends AppCompatActivity {
                 String searchtext = editText.getText().toString();
                 String searchname = null;
                 StringBuilder sb = new StringBuilder("https://twitter.com/search?q=");
+
+                String exceptword = SettingsFragment.getText(MainActivity.this);
+                String selectword = SettingsFragment.getLanguage(MainActivity.this);
 
                 //入力値確認
                 Log.d("debug","Debug_input:"+searchtext);
@@ -60,13 +65,13 @@ public class MainActivity extends AppCompatActivity {
                     Log.d("debug","Debug(#):"+sb);
                 }
 
-                if(checkBox_jp.isChecked() == true){
+                if(checkBox_sl.isChecked() == true){
                     if(searchtext.startsWith("#")){
-                        sb.append("%20lang:ja");
-                        Log.d("debug","Debug(lang:ja && #):"+sb);
+                        sb.append("%20" + selectword);
+                        Log.d("debug","Debug(lang:ja && #):" + sb);
                     }else {
-                        String str_jp = searchtext + "%20lang:ja";
-                        sb.append(str_jp);
+                        String str_sl = searchtext + "%20" + selectword;
+                        sb.append(str_sl);
                         Log.d("debug", "Debug(lang:ja):" + sb);
                     }
                 }
@@ -78,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
                         toast.show();
                         return;
                     }
-                    if(searchtext.startsWith("#") || checkBox_jp.isChecked() == true) {
+                    if(searchtext.startsWith("#") || checkBox_sl.isChecked() == true) {
                         sb.append("%20from:@" + searchname);
                         Log.d("debug", "Debug(searchname && (# || jp)):" + sb);
                     }else {
@@ -88,23 +93,23 @@ public class MainActivity extends AppCompatActivity {
                 }
 
                 else {
-                    if(!searchtext.startsWith("#") && checkBox_jp.isChecked() == false && checkBox_gn.isChecked() == false){
+                    if(!searchtext.startsWith("#") && checkBox_sl.isChecked() == false && checkBox_gn.isChecked() == false){
                         sb.append(searchtext);
                     }
                 }
                 if(checkBox_bt.isChecked() == true){
-                    sb.append("%20-%22bot%22");
+                    sb.append("%20-%22" + exceptword + "%22");
                 }
 
                 //最終出力文字列
                 Log.d("debug","DebugMessage_last:"+sb);
 
-                SharedPreferences sp = getSharedPreferences("sp",MODE_PRIVATE);
+                SharedPreferences sp = getSharedPreferences("HistoryDate",MODE_PRIVATE);
 
                 for(int count=1; count<6; count++) {
-                    Log.d("debug", "Debug(string)"+count);
-                    if (sp.contains("SaveString_"+ count) == false) {
-                        sp.edit().putString("SaveString_"+ count, sb.toString()).commit();
+                    Log.d("debug", "Debug(string):" + count);
+                    if (sp.contains("SaveString_" + count) == false) {
+                        sp.edit().putString("SaveString_" + count, sb.toString()).commit();
                         Log.d("debug", "Debug(writing)");
                         count = 10;
                     }
@@ -112,6 +117,7 @@ public class MainActivity extends AppCompatActivity {
                         Toast.makeText(MainActivity.this,"HistoryCapacity is full",Toast.LENGTH_SHORT).show();
                     }
                 }
+
                 Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(sb.toString()));
                 startActivity(intent);
             }
@@ -124,5 +130,23 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.options, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.menu_open_settings:
+                startActivity(new Intent(this, SettingsActivity.class));
+                return true;
+            default:
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
