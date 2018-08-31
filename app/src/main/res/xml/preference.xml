@@ -4,7 +4,7 @@
     <ListPreference
         android:key="setting_language"
         android:title="検索言語"
-        android:defaultValue="Japanese"
+        android:defaultValue="japanese"
         android:entries="@array/language_entries"
         android:entryValues="@array/language_values"/>
 

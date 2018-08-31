@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorAquamarine"
     tools:context=".HistoryActivity"
     tools:layout_editor_absoluteY="81dp">
 
@@ -13,6 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:text="戻る"
+        android:background="@drawable/flame_style"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/button_delete"
         app:layout_constraintHorizontal_bias="0.5"
@@ -25,6 +27,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:text="削除"
+        android:background="@drawable/flame_style"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -47,6 +50,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:background="@color/colorChocolate"
                 android:text="TextView"
                 android:textIsSelectable="true" />
         </TableRow>
@@ -59,8 +63,9 @@
             <TextView
                 android:id="@+id/textView_disp_2"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:background="@color/colorAccent"
                 android:text="TextView"
                 android:textIsSelectable="true" />
         </TableRow>
@@ -73,8 +78,9 @@
             <TextView
                 android:id="@+id/textView_disp_3"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:background="@color/colorPrimary"
                 android:text="TextView"
                 android:textIsSelectable="true" />
         </TableRow>
@@ -87,8 +93,9 @@
             <TextView
                 android:id="@+id/textView_disp_4"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:background="@color/colorYellow"
                 android:text="TextView"
                 android:textIsSelectable="true" />
         </TableRow>
@@ -101,8 +108,9 @@
             <TextView
                 android:id="@+id/textView_disp_5"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:background="@color/colorSpringgreen"
                 android:text="TextView"
                 android:textIsSelectable="true" />
         </TableRow>

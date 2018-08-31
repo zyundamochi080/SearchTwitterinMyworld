@@ -5,8 +5,8 @@
     <color name="colorAccent">#FF4081</color>
     <color name="colorSkyblue">#87ceeb</color>
     <color name="colorSpringgreen">#00ff7f</color>
+    <color name="colorAquamarine">#7fffd4</color>
+    <color name="colorYellow">#ffff00</color>
+    <color name="colorChocolate">#d2691e</color>
     <color name="colorWhite">#ffffff</color>
-
-    <!--透明色-->
-    <color name="colorClearButton">#33000000</color>
 </resources>
