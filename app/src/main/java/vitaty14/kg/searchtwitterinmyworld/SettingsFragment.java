@@ -7,6 +7,7 @@ import android.preference.EditTextPreference;
 import android.preference.Preference;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
+import android.view.View;
 
 public class SettingsFragment extends PreferenceFragment{
     private static final String P_KEY_LANGUAGE = "setting_language";
@@ -33,6 +34,7 @@ public class SettingsFragment extends PreferenceFragment{
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context.getApplicationContext());
         return preferences.getString(P_KEY_TEXT, context.getString(R.string.default_word));
     }
+
     public static String getLanguage(Context context){
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context.getApplicationContext());
         String value = preferences.getString(P_KEY_LANGUAGE,null);
@@ -62,5 +64,12 @@ public class SettingsFragment extends PreferenceFragment{
                 break;
         }
         return "japanese";
+    }
+
+    @Override
+    public void onStart(){
+        super.onStart();
+        View v = getView();
+        v.setBackgroundColor(getActivity().getColor(R.color.colorSkyblue_trans));
     }
 }

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.ActivityInfo;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -21,6 +22,8 @@ public class HistoryActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_history);
+
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         TextView textView_disp_1 = findViewById(R.id.textView_disp_1);
         TextView textView_disp_2 = findViewById(R.id.textView_disp_2);
@@ -57,9 +60,14 @@ public class HistoryActivity extends AppCompatActivity {
         builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                Toast.makeText(HistoryActivity.this,"select OK",Toast.LENGTH_SHORT).show();
-                SharedPreferences sp = getSharedPreferences("sp",Context.MODE_PRIVATE);
-                sp.edit().clear().commit();
+                Toast.makeText(HistoryActivity.this,"Clear!",Toast.LENGTH_SHORT).show();
+                SharedPreferences sp = getSharedPreferences("HistoryDate",Context.MODE_PRIVATE);
+                sp.edit().clear().apply();
+
+                //Activityをリロード
+                Intent intent = new Intent(getApplication(),HistoryActivity.class);
+                startActivity(intent);
+                finish();
             }
         });
         builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {

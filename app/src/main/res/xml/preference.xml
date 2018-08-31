@@ -6,7 +6,7 @@
         android:title="検索言語"
         android:defaultValue="japanese"
         android:entries="@array/language_entries"
-        android:entryValues="@array/language_values"/>
+        android:entryValues="@array/language_values" />
 
     <EditTextPreference
         android:key="setting_word"

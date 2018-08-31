@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@mipmap/img226"
+    android:screenOrientation="portrait"
     tools:context=".MainActivity">
 
     <EditText
@@ -41,7 +42,7 @@
 
     <CheckBox
         android:id="@+id/checkBox_selectlanguage"
-        android:layout_width="182dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:checked="true"
         android:duplicateParentState="false"
@@ -69,7 +70,7 @@
 
     <CheckBox
         android:id="@+id/checkBox_getname"
-        android:layout_width="177dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:checked="false"

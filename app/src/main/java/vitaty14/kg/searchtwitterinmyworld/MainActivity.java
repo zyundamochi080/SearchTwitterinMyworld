@@ -1,9 +1,9 @@
 //created by KG 2018/08/20
 package vitaty14.kg.searchtwitterinmyworld;
 
-
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.ActivityInfo;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -22,6 +22,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         Button button = findViewById(R.id.button_search);
         Button button_h = findViewById(R.id.button_history);
@@ -48,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
                 Log.d("debug","Debug_input:"+searchtext);
 
                 if(searchtext.length() == 0) {
-                    if (checkBox_gn.isChecked() == true) {
+                    if (checkBox_gn.isChecked()) {
                         searchname = editText_gn.getText().toString();
                         sb.append("%20from:@" + searchname);
                         Log.d("debug", "Debug(notText && name):" + sb);
@@ -65,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
                     Log.d("debug","Debug(#):"+sb);
                 }
 
-                if(checkBox_sl.isChecked() == true){
+                if(checkBox_sl.isChecked()){
                     if(searchtext.startsWith("#")){
                         sb.append("%20" + selectword);
                         Log.d("debug","Debug(lang:ja && #):" + sb);
@@ -76,14 +78,14 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
 
-                if(checkBox_gn.isChecked() == true && searchname == null){
+                if(checkBox_gn.isChecked() && searchname == null){
                     searchname = editText_gn.getText().toString();
                     if(searchname.length() == 0){
                         Toast toast = Toast.makeText(MainActivity.this, "user ID not Found", Toast.LENGTH_SHORT);
                         toast.show();
                         return;
                     }
-                    if(searchtext.startsWith("#") || checkBox_sl.isChecked() == true) {
+                    if(searchtext.startsWith("#") || checkBox_sl.isChecked()) {
                         sb.append("%20from:@" + searchname);
                         Log.d("debug", "Debug(searchname && (# || jp)):" + sb);
                     }else {
@@ -93,11 +95,11 @@ public class MainActivity extends AppCompatActivity {
                 }
 
                 else {
-                    if(!searchtext.startsWith("#") && checkBox_sl.isChecked() == false && checkBox_gn.isChecked() == false){
+                    if(!searchtext.startsWith("#") && !checkBox_sl.isChecked() && !checkBox_gn.isChecked()){
                         sb.append(searchtext);
                     }
                 }
-                if(checkBox_bt.isChecked() == true){
+                if(checkBox_bt.isChecked()){
                     sb.append("%20-%22" + exceptword + "%22");
                 }
 
@@ -108,12 +110,12 @@ public class MainActivity extends AppCompatActivity {
 
                 for(int count=1; count<6; count++) {
                     Log.d("debug", "Debug(string):" + count);
-                    if (sp.contains("SaveString_" + count) == false) {
-                        sp.edit().putString("SaveString_" + count, sb.toString()).commit();
+                    if (!sp.contains("SaveString_" + count)) {
+                        sp.edit().putString("SaveString_" + count, sb.toString()).apply();
                         Log.d("debug", "Debug(writing)");
                         count = 10;
                     }
-                    if(sp.contains("SaveString_5") == true && count<=5){
+                    if(sp.contains("SaveString_5") && count<=5){
                         Toast.makeText(MainActivity.this,"HistoryCapacity is full",Toast.LENGTH_SHORT).show();
                     }
                 }
